@@ -63,6 +63,12 @@ submit_button = st.button("Ask the question")
 # If user submits a query
 if submit_button and input_query:
     # Get response from Gemini Pro model
+    expert_advice = find_expert_advice(input_query)
+    if expert_advice:
+        # Display expert advice
+        st.subheader("Expert Advice:")
+        st.write(expert_advice)
+        st.session_state['chat_history'].append(("Expert", expert_advice))
     response = get_gemini_response(input_query)
     # Add user query and response to session state chat history
     st.session_state['chat_history'].append(("You", input_query))
@@ -70,12 +76,7 @@ if submit_button and input_query:
     for chunk in response:
         st.write(chunk.text)
         st.session_state['chat_history'].append(("Bot", chunk.text))
-    expert_advice = find_expert_advice(input_query)
-    if expert_advice:
-        # Display expert advice
-        st.subheader("Expert Advice:")
-        st.write(expert_advice)
-        st.session_state['chat_history'].append(("Expert", expert_advice))
+    
 
 # Display chat history
 st.subheader("The Chat History is")
