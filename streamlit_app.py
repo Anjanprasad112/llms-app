@@ -42,7 +42,7 @@ def find_expert_advice(query):
         return None
 
 # Initialize Streamlit app
-# st.set_page_config(page_title="AiDvice-Medical")
+st.set_page_config(page_title="AiDvice-Medical")
 st.header("AiDvice-Medical")
 
 # Display disclaimer
