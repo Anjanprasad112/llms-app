@@ -78,7 +78,4 @@ if submit_button and input_query:
         st.session_state['chat_history'].append(("Bot", chunk.text))
     
 
-# Display chat history
-st.subheader("The Chat History is")
-for role, text in st.session_state['chat_history']:
-    st.write(f"{role}: {text}")
+
